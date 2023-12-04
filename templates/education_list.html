@@ -1,0 +1,28 @@
+<!-- education_list.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div>
+    <div class="col-xs-12 text-center kc-news-head">
+      <h1>Идет набор</h1>
+      <div class="news-type"></div>
+    </div>
+    {% for education in educations %}
+    <a href="{% url 'education_detail' pk=education.id %}" class="academy-course academy-course--prim" data-mh="acad-course">
+      <span class="academy-course__date me-2">
+          <span class="academy-course__date__title">НАБОР ДО</span>
+          <span class="academy-course__date__day">{{ education.set_up }}</span>
+      </span>
+      <span class="academy-course__text">
+          <span class="academy-course__cat">Профессиональный курс</span>
+          <span class="academy-course__title">{{ education.name }}</span>
+          <span class="academy-course__duration">{{ education.start }} - {{ education.end }}</span>
+      </span>
+    </a>
+    {% endfor %}
+
+
+  </div>
+</div>
+{% endblock %}

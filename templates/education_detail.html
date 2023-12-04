@@ -1,0 +1,44 @@
+<!-- education_detail.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="kc-acad-inner-hero">
+  <div class="container">
+      <div class="row">
+          <div class="col-xs-12">
+              <a href="#" class="academy-course academy-course--white">
+      <span class="academy-course__date">
+        <span class="academy-course__date__title">НАБОР ДО</span>
+        <span class="academy-course__date__day">8 декабря 2023 г.</span>
+      </span>
+      <div class="academy-course__text">
+        <span class="academy-course__cat">Профессиональный курс</span>
+        <h1 class="academy-course__title" style="margin: 0 0 5px 0">Менеджер по персоналу (HR менеджер)</h1>
+        <span class="academy-course__duration">9 декабря 2023 г. - 13 января 2024 г.</span>
+      </div>
+              </a>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="kc-acad-inner-content">
+  <div class="container">
+      <div class="row">
+            <div class="col-xs-12">
+              {{ education.description.html | safe }}
+          </div>
+      </div>
+
+
+
+
+
+
+
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,126 @@
+<!-- visas_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="col-xs-12 text-center">
+    <h1>Список виз</h1>
+    <div class="d-flex me-5">
+      {% for visa in visas %}
+        <div>
+          <h2><a href="{% url 'visas_detail' pk=visa.pk %}" style="margin-right: 20px;border-radius: 30px; padding: 8px 15px;background-color: #00000097; color: white;font-size: 14px;">   {{ visa.name }}   </a></h2>
+          <!-- Добавьте другие поля модели Visas, которые вы хотите отобразить -->
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+
+    <div class="row mt-20">
+      <div class="col-xs-12 text-center"><h2>Страны с безвизовым режимом
+        для въезда в Кыргызстан</h2><br>В соответствии с Законом Кыргызской Республики «О введении безвизового режима для граждан некоторых государств сроком до 60 дней», от визовых требований сроком до 60 дней для въезда/выезда пребывания на территории Кыргызской Республики освобождаются граждане владельцы категорий паспортов: дипломатический, служебный/специальный, общегражданский/заграничный следующих государств(актуальность информации просим уточнять на сайте источника: <a href="http://www.mfa.gov.kg/contents/view/id/216">http://www.mfa.gov.kg/contents/view/id/216</a> ):</div>        
+                    
+      <div class="col-xs-12 col-sm-4 col-md-4">
+          <p class="kc-visa__country-name">1.Республика Австрия</p>
+          <p class="kc-visa__country-name">2.Австралийский союз</p>
+          <p class="kc-visa__country-name">3.Королевство Бельгия</p>
+          <p class="kc-visa__country-name">4.Босния и Герцеговина</p>
+          <p class="kc-visa__country-name">5.Ватикан</p>
+          <p class="kc-visa__country-name">6.Соединенное Королевство Великобритании и Северной Ирландии</p>
+          <p class="kc-visa__country-name">7.Венгрия</p>
+          <p class="kc-visa__country-name">8.Федеративная Республика Германия</p>
+          <p class="kc-visa__country-name">9.Королевство Нидерландов</p>
+          <p class="kc-visa__country-name">10.Греческая Республика</p>
+          <p class="kc-visa__country-name">11.Королевство Дания</p>
+          <p class="kc-visa__country-name">12.Исландия</p>
+          <p class="kc-visa__country-name">13.Ирландия</p>
+          <p class="kc-visa__country-name">14.Королевство Испания</p>
+          <p class="kc-visa__country-name">15.Итальянская Республика</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-4">
+          <p class="kc-visa__country-name">16.Канада</p>
+          <p class="kc-visa__country-name">17.Республика Корея</p>
+          <p class="kc-visa__country-name">18.Государство Кувейт</p>
+          <p class="kc-visa__country-name">19.Латвийская Республика</p>
+          <p class="kc-visa__country-name">20.Литовская Республика</p>
+          <p class="kc-visa__country-name">21.Княжество Лихтенштейн</p>
+          <p class="kc-visa__country-name">22.Великое Герцогство Люксембург</p>
+          <p class="kc-visa__country-name">23.Республика Мальта</p>
+          <p class="kc-visa__country-name">24.Княжество Монако</p>
+          <p class="kc-visa__country-name">25.Новая Зеландия</p>
+          <p class="kc-visa__country-name">26.Королевство Норвегия</p>
+          <p class="kc-visa__country-name">27.Объединенные Арабские Эмираты</p>
+          <p class="kc-visa__country-name">28.Республика Польша</p>
+          <p class="kc-visa__country-name">29.Португальская Республика</p>
+          <p class="kc-visa__country-name">30.Королевство Саудовская Аравия</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-4">
+          <p class="kc-visa__country-name">31.Республика Сингапур</p>
+          <p class="kc-visa__country-name">32.Словацкая Республика</p>
+          <p class="kc-visa__country-name">33.Республика Словения</p>
+          <p class="kc-visa__country-name">34.Соединенные Штаты Америки</p>
+          <p class="kc-visa__country-name">35.Финляндская Республика</p>
+          <p class="kc-visa__country-name">36.Французская Республика</p>
+          <p class="kc-visa__country-name">37.Республика Хорватия</p>
+          <p class="kc-visa__country-name">38.Чешская Республика</p>
+          <p class="kc-visa__country-name">39.Швейцарская Конфедерация</p>
+          <p class="kc-visa__country-name">40.Королевство Швеция</p>
+          <p class="kc-visa__country-name">41.Эстонская Республика</p>
+          <p class="kc-visa__country-name">42.Государство Катар</p>
+          <p class="kc-visa__country-name">43.Государство Бруней-Даруссалам</p>
+          <p class="kc-visa__country-name">44.Королевство Бахрейн</p>
+          <p class="kc-visa__country-name">45.Япония</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-4">
+          
+
+</div>
+
+<div class="row">
+<div class="col-xs-12 text-center">
+  <h2 class="sub-head mt-50 mb-30 text-blue">Страны безвизового режима <br> для граждан Кыргызстана</h2>
+  <p>Перечень стран с безвизовым режимом для граждан КР, владельцев всех категорий национальных паспортов (актуальность информации просим уточнять на сайте источника - www.mfa.gov.kg ):</p>
+</div>
+</div>
+<div class="row mt-20">
+
+  
+      <div class="col-xs-12 col-sm-4 col-md-4">
+          <p class="kc-visa__country-name">1.Азербайджан, безвизовый режим</p>
+          <p class="kc-visa__country-name">2.Армения, безвизовый режим</p>
+          <p class="kc-visa__country-name">3.Бангладеш, виза по прилету</p>
+          <p class="kc-visa__country-name">4.Белоруссия, безвизовый режим</p>
+          <p class="kc-visa__country-name">5.Вьетнам, виза по прилету до 30 дней</p>
+          <p class="kc-visa__country-name">6.Грузия, безвизовый режим</p>
+          <p class="kc-visa__country-name">7.Иордания, виза по прилету</p>
+          <p class="kc-visa__country-name">8.Казахстан, безвизовый режим</p>
+          <p class="kc-visa__country-name">9.Малайзия , до 30 дней без визы</p>
+          <p class="kc-visa__country-name">10.Мальдивы, по прилету</p>
+          <p class="kc-visa__country-name">11.Молдавия, до 90 безвизовый режим</p>
+          <p class="kc-visa__country-name">12.Монголия, до 90 дней безвизовый режим</p>
+          <p class="kc-visa__country-name">13.Россия, безвизовый режим</p>
+          <p class="kc-visa__country-name">14.Таджикистан, безвизовый режим</p>
+          <p class="kc-visa__country-name">15.Турция, до 90 дней безвизовый режим</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-4">
+          <p class="kc-visa__country-name">16.Узбекистан, безвизовый режим до 30 дней</p>
+          <p class="kc-visa__country-name">17.Украина, безвизовый до 90 дней</p>
+          <p class="kc-visa__country-name">18.Филиппины, до 30 дней безвизовый режим</p>
+          <p class="kc-visa__country-name">19.Эквадор, до 90 дней безвизовый режим</p>
+          <p class="kc-visa__country-name">20.Сербия до 90 дней в полугодии</p>
+          
+              </div>
+          
+  
+
+</div>
+</div>
+
+
+</div>
+
+
+
+{% endblock %}

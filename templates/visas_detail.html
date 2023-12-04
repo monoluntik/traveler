@@ -1,0 +1,14 @@
+<!-- visas_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="col-xs-12 text-center kc-news-head">
+    <h1>{{ visa.name }}</h1>
+    <div class="news-type"></div>
+  </div>
+  {{ visa.description.html | safe }}
+
+</div>
+  <!-- Добавьте другие элементы и информацию по необходимости -->
+{% endblock %}

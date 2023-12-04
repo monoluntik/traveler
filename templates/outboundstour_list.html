@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="layout-pt-md layout-pb-lg">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 lg:d-none">
+          <aside class="sidebar y-gap-40">
+            <!-- поиск -->
+            <form method="post" action="{% url 'outbounds-tours-name' %}">
+              {% csrf_token %}
+              
+              <div class="sidebar__item -no-border">
+                <h5 class="text-18 fw-500 mb-10">Категории</h5>
+                <div class="sidebar-checkbox">
+
+                  <div class="row y-gap-10 items-center justify-between">
+                    <div class="col-auto">
+                      <div class="d-flex items-center">
+                        <div class="form-checkbox ">
+                          <input type="checkbox" id="qwe1" name="is_last_minute_tours">
+                          <div class="form-checkbox__mark">
+                            <div class="form-checkbox__icon icon-check"></div>
+                          </div>
+                        </div>
+                        <label for="qwe1" class="text-15 ml-10">Горящие туры</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row y-gap-10 items-center justify-between">
+                    <div class="col-auto">
+                      <div class="d-flex items-center">
+                        <div class="form-checkbox ">
+                          <input type="checkbox" id="qwe2" name="is_sightseeing_tour">
+                          <div class="form-checkbox__mark">
+                            <div class="form-checkbox__icon icon-check"></div>
+                          </div>
+                        </div>
+                        <label for="qwe2" class="text-15 ml-10">Экскурсионный тур</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row y-gap-10 items-center justify-between">
+                    <div class="col-auto">
+                      <div class="d-flex items-center">
+                        <div class="form-checkbox ">
+                          <input type="checkbox" id="qwe3" name="is_economy_tour">
+                          <div class="form-checkbox__mark">
+                            <div class="form-checkbox__icon icon-check"></div>
+                          </div>
+                        </div>
+                        <label for="qwe3" class="text-15 ml-10">Экономичный тур</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row y-gap-10 items-center justify-between">
+                    <div class="col-auto">
+                      <div class="d-flex items-center">
+                        <div class="form-checkbox ">
+                          <input type="checkbox" id="qwe4" name="is_romantic_getaways">
+                          <div class="form-checkbox__mark">
+                            <div class="form-checkbox__icon icon-check"></div>
+                          </div>
+                        </div>
+                        <label for="qwe4" class="text-15 ml-10">Романтический отдых</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row y-gap-10 items-center justify-between">
+                    <div class="col-auto">
+                      <div class="d-flex items-center">
+                        <div class="form-checkbox ">
+                          <input type="checkbox" id="qwe5" name="is_active_leisure">
+                          <div class="form-checkbox__mark">
+                            <div class="form-checkbox__icon icon-check"></div>
+                          </div>
+                        </div>
+                        <label for="qwe5" class="text-15 ml-10">Активный отдых</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row y-gap-10 items-center justify-between">
+                    <div class="col-auto">
+                      <div class="d-flex items-center">
+                        <div class="form-checkbox ">
+                          <input type="checkbox" id="qwe6" name="is_holiday_tours">
+                          <div class="form-checkbox__mark">
+                            <div class="form-checkbox__icon icon-check"></div>
+                          </div>
+                        </div>
+                        <label for="qwe6" class="text-15 ml-10">Туры на праздники</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <div class="border-top-light mt-10 mb-10"></div>
+
+              <div class="searchMenu-date px-20 py-10 border-light rounded-4 -right js-form-dd js-calendar">
+                <div data-x-dd-click="searchMenu-date">
+                  {{ form.country }}
+                </div>
+              </div>
+              <div class="border-top-light mt-10 mb-10"></div>
+              <div class="col-12">
+                <button class="button -dark-1 py-15 px-35 h-60 col-12 rounded-4 bg-blue-1 text-white">
+                  <i class="icon-search text-20 mr-10"></i>
+                  Поиск
+                </button>
+              </div>
+            </form>
+          </aside>
+        </div>
+        <div class="col">
+          <div class="row y-gap-30">
+            {% if outboundsToursAll %}
+             {% for outbounds_tour in outboundsToursAll %}
+              <div class="col-md-auto">
+                <div class="cardImage ratio ratio-1:1 w-250 md:w-1/1 rounded-4">
+                  <div class="cardImage__content">
+                    <div class="cardImage-slider rounded-4 overflow-hidden js-cardImage-slider">
+                      <div class="swiper-wrapper">
+                        {% for image in outbounds_tour.images.all %}
+                          <div class="swiper-slide">
+                            <img class="col-12 js-lazy" src="#" data-src="{{ image.image.url }}" alt="image">
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <a href="{{ outbounds_tour.id }}" class="button -dark-2 py-15 px-35 h-60 col-12 rounded-4 bg-blue-1 text-white">Подробнее</a>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="row x-gap-10 items-center">
+                  <div class="col-auto">
+                    <p class="text-14 lh-14 mb-5">Дней: {{ outbounds_tour.amount_days }}<br>Ночей: {{ outbounds_tour.amount_nights }}</p>
+                  </div>
+                  <div class="col-auto">
+                    <div class="size-3 rounded-full bg-light-1 mb-5"></div>
+                  </div>
+                </div>
+                <h3 class="text-18 lh-16 fw-500">{{ outbounds_tour.name }}</h3>
+                <p class="text-14 lh-14 mt-5">{{ outbounds_tour.description }}</p>
+                <div class="text-14 lh-15 fw-500 mt-20">Цена от: {{ outbounds_tour.price_kgs }} сом</div>
+                <div class="text-14 text-green-2 fw-500 lh-15 mt-5">Цена от: {{ outbounds_tour.price_usd }} долларов</div>
+    
+              </div>
+              {% endfor %}
+            {% else %}
+              <p>Туры в данном направлении не найдены.</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      
+    </div>
+</section>
+{% endblock %}

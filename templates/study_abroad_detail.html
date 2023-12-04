@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="mt-50 border-top-light"></div>
+  </div>
+
+  <div class="container">
+    <div class="col-md-8 col-sm-6 col-xs-12">
+      <h1>{{ study.name }}</h1>
+      <div class="row">
+          <div class="col-md-4 col-xs-12">
+              <p><strong>Особенности программы</strong></p>
+              <div class="whats-included-icons">
+                  <p>{{ study.features_of_the_program }}</p>
+              </div>
+          </div>
+          <div class="col-md-4 col-xs-12">
+              <p><strong>Направление</strong></p>
+              <p>{{ study.direction }}</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4 col-xs-12">
+              <p><strong>Дедлайн приема документов</strong></p>
+              
+                  <p>{{ study.deadline_for_submission_of_documents }}</p>
+              
+          </div>
+          <div class="col-md-4 col-xs-12">
+              <p><strong>Длительность программы</strong> </p>
+              <div class="seasons-marker clearfix">
+                  <p>{{ study.duration_of_the_program }}</p>
+              </div>
+          </div>
+      </div>
+      <p class="tour-desc"></p><p>{{ study.description.html | safe }}</p><p></p>
+  </div>
+  <div class="d-flex">
+    {% for additional in study.additional.all %}
+
+    <button onclick="showSection(Number(`{{ additional.id }}`))" class="active button -dark-1 py-10 px-20 me-2 rounded-4 bg-blue-1 text-white">{{ additional.name }}</button>
+    {% endfor %}
+  </div>
+    {% for additional in study.additional.all %}
+    <!-- Ваш файл шаблона, например, index.html -->
+    {% if additional.id == 1 %}
+    <div id="section{{ additional.id }}" class="section active">
+      <h3 class="text-28 fw-500">{{ additional.name }}</h3>
+      {{ additional.description.html | safe }}
+      <div class="col-xs-12">
+        <h3>Тип программы</h3>
+        <div class="d-flex">
+          {% for whome in study.for_whomes.all %}
+    
+        <a href="#" class="button -dark-1 py-10 px-20 me-2 rounded-4 bg-blue-1 text-white">{{ whome.for_whome }}</a>
+    
+        {% endfor %}
+        </div>
+      </div>  
+    {% else %}
+    <div id="section{{ additional.id }}" class="section">
+      <h3 class="text-28 fw-500">{{ additional.name }}</h3>
+      {{ additional.description.html | safe }}
+    {% endif %}
+      <!-- Содержимое раздела 1 -->
+
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

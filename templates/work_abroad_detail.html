@@ -1,0 +1,15 @@
+<!-- work_abroad_detail.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="col-xs-12 text-center kc-news-head">
+      <h1>{{ work_abroad.name }}</h1>
+      <div class="news-type"></div>
+    </div>
+    {{ work_abroad.description.html | safe }}
+  
+  </div>
+<br>
+<!-- Добавьте другие поля модели WorkAbroad, которые вы хотите отобразить -->
+{% endblock %}
