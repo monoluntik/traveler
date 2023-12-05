@@ -1,16 +1,10 @@
-# Используйте образ Python для вашего приложения
-FROM python:3.8-slim
+FROM python:3.8
 
-# Установите переменную окружения PYTHONUNBUFFERED
-ENV PYTHONUNBUFFERED 1
-
-# Создайте и установите директорию приложения
-RUN mkdir /app
 WORKDIR /app
 
-# Установите зависимости
 COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Скопируйте код приложения в контейнер
 COPY . /app/
+
+CMD ["gunicorn", "core.wsgi:application", "-w", "4", "-b", "0.0.0.0:8000"]

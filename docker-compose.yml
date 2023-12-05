@@ -1,20 +1,18 @@
 version: '3'
 
 services:
-  # Сервис Django
   web:
     build: .
-    command: gunicorn core.wsgi:application -w 4 -b 0.0.0.0:8889
+    command: gunicorn core.wsgi:application -w 4 -b 0.0.0.0:8000
     volumes:
       - .:/app
     ports:
-      - "8889:8889"
-  
-  # Сервис Nginx
+      - "8000:8000"
+
   nginx:
     image: nginx:latest
     ports:
-      - "8889:80"
+      - "8888:80"
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./static:/app/static
