@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django_countries',
     'django_quill',
     'studyAbroad',
