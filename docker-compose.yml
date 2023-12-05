@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  # Сервис Django
+  web:
+    build: .
+    command: gunicorn core.wsgi:application -w 4 -b 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+  
+  # Сервис Nginx
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - /app/static:/app/static
+      - /app/media:/app/media
+    depends_on:
+      - web
