@@ -50,7 +50,7 @@
 
         <div class="col-auto">
           <div class="d-flex items-center">
-            <a href="" class="header-logo mr-20" data-x="header-logo" data-x-toggle="is-logo-dark">
+            <a href="{% url 'home' %}" class="header-logo mr-20" data-x="header-logo" data-x-toggle="is-logo-dark">
               <img src="{% static 'img/general/logo-light.svg' %}" alt="logo icon">
               <img src="{% static 'img/general/logo-dark.svg' %}" alt="logo icon">
             </a> <!-- Иконка -->
@@ -169,10 +169,36 @@
             <p>&copy; 2023 Your Website. All rights reserved.</p>
         </div>
         <div class="footer-section">
+          
             <h2>Quick Links</h2>
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
+            <div class="menu js-navList">
+              <ul class="menu__nav text-white -is-active">
+
+                <li>
+                  <a data-barba href="{% url 'home' %}">
+                    <span class="mr-10">Главная</span>
+                  </a>
+
+                </li>
+                <li>
+                  <a href="{% url 'outbounds-tours-name' %}">
+                    Туры за рубеж
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'study-abroad-list' %}">Обучение за границей</a>
+                </li>
+                <li>
+                  <a href="{% url 'work_abroad_list' %}">Работа за границей</a>
+                </li>
+                <li>
+                  <a href="{% url 'visas_list' %}">Визы</a>
+                </li>
+                <li>
+                  <a href="{% url 'education_list' %}">Академия</a>
+                </li>
+              </ul>
+            </div>
         </div>
         <div class="footer-section">
             <h2>Contact Us</h2>
@@ -181,6 +207,8 @@
         </div>
     </div>
 </footer>
+
+
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script>
   <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
 
