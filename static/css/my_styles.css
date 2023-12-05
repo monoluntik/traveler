@@ -113,3 +113,11 @@
     border-left: 2px solid #0091d4
 }
 
+.academy-course--prim .academy-course__date {
+    color: #39b54a
+}
+
+.academy-course--prim .academy-course__cat,
+.academy-course--prim .academy-course__duration {
+    color: #0091d4
+}

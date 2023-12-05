@@ -1,6 +1,6 @@
 <!-- education_list.html -->
 {% extends 'base.html' %}
-{% load static %}
+
 {% block content %}
 <div class="container">
   <div>
@@ -9,7 +9,7 @@
       <div class="news-type"></div>
     </div>
     {% for education in educations %}
-    <a href="{% url 'education_detail' pk=education.id %}" class="academy-course academy-course--prim" data-mh="acad-course">
+    <a href="{% url 'education_detail' pk=education.id %}" class="academy-course academy-course--prim">
       <span class="academy-course__date me-2">
           <span class="academy-course__date__title">НАБОР ДО</span>
           <span class="academy-course__date__day">{{ education.set_up }}</span>
