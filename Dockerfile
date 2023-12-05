@@ -1,15 +1,25 @@
-# Используйте базовый образ с Python
+# Используем официальный образ Python
 FROM python:3.8
 
-# Установите зависимости
-COPY requirements.txt /app/
-WORKDIR /app
-RUN pip install --no-cache-dir -r requirements.txt
+# Устанавливаем переменные окружения
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-# Копируйте приложение в образ
+# Создаем и устанавливаем рабочую директорию
+WORKDIR /app
+
+# Копируем файл зависимостей
+COPY requirements.txt /app/
+
+# Устанавливаем зависимости
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+# Копируем файлы проекта в контейнер
 COPY . /app/
 
-# Определите переменные окружения, если необходимо
+# Открываем порт, на котором будет работать приложение
+EXPOSE 8000
 
-# Запустите приложение
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "core.wsgi:application"]
+# Команда для запуска приложения
+CMD ["gunicorn", "core.wsgi:application", "-b", "0.0.0.0:8000"]

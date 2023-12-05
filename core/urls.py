@@ -39,15 +39,8 @@ urlpatterns = [
     path('educations/<int:pk>/',EducationDetailView.as_view(), name='education_detail'),
  
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 
-
-
-'main short lists of all --- request'
-'tours list pk -- listview detailview'
-'study abroad list pk -- listview detailview'
-'visa list pk -- listview detailview'
-'academy list pk -- listview detailview'
-'work abroad list pk -- listview detailview'
 
