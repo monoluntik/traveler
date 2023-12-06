@@ -1,6 +1,6 @@
 asgiref 
 bleach 
-Django 
+Django
 django-ckeditor-5 
 django-countries 
 django-multipleselectfield

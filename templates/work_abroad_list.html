@@ -13,11 +13,9 @@
         <div class="cardImage__content">
           <div class="cardImage-slider rounded-4 overflow-hidden js-cardImage-slider">
             <div class="swiper-wrapper">
-              {% for image in work_abroad.images.all %}
                 <div class="swiper-slide">
-                  <img class="col-12 js-lazy" src="#" data-src="{{ image.image.url }}" alt="image">
+                  <img class="col-12 js-lazy" src="#" data-src="{{ work_abroad.images.first.image.url }}" alt="image">
                 </div>
-              {% endfor %}
             </div>
           </div>
         </div>
@@ -42,7 +40,7 @@
   {% endfor %}
 </div>
 {% else %}
-    <p>Туры в данном направлении не найдены.</p>
+    <p>В данное время данных нет.</p>
 {% endif %}
 </div>
 <br>

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'new_base.html' %}
 {% load static %}
 {% block content %}
 
@@ -133,6 +133,122 @@
     </div>
   </div>
 </section>
+
+<section class="layout-pt-lg layout-pb-md">
+
+  <div class="container">
+
+    <div data-anim="slide-up delay-1" class="row y-gap-20 justify-between items-end">
+      <div class="col-auto">
+        <div class="sectionTitle -md">
+          <h2 class="sectionTitle__title">Работа за границей</h2>
+          <p class=" sectionTitle__text mt-5 sm:mt-0"> Высшее образование, летние каникулы и языковые курсы в США, Европе, Китае и других странах</p>
+        </div>
+      </div>
+
+      <div class="col-auto md:d-none">
+
+        <a href="{% url 'work_abroad_list' %}" class="button -md -blue-1 bg-blue-1-05 text-blue-1">
+          Показать все <div class="icon-arrow-top-right ml-15"></div>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="relative pt-40 sm:pt-20 js-section-slider" data-gap="30" data-scrollbar
+      data-slider-cols="base-2 xl-4 lg-3 md-2 sm-2 base-1" data-anim="slide-up delay-2">
+   
+        <div class="container">
+          {% if work_abroads %}
+          <div class="d-flex">
+            {% for work_abroad in work_abroads %}
+            <div class="me-5">
+              <div class="">
+                <div class="cardImage ratio ratio-1:1 md:w-1/1 rounded-4">
+                  <div class="cardImage__content">
+                    <div class="cardImage-slider rounded-4 overflow-hidden js-cardImage-slider">
+                      <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <img class="col-12 js-lazy" src="#" data-src="{{ work_abroad.images.first.image.url }}" alt="image">
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="">
+                <div class="row x-gap-10 items-center">
+                  <div class="col-auto">
+                    <p class="text-14 lh-14 mb-5">Страна: {{ work_abroad.country.name }}<br></p>
+                  </div>
+                  <div class="col-auto">
+                    <div class="size-3 rounded-full bg-light-1 mb-5"></div>
+                  </div>
+                </div>
+                <h3 class="text-18 lh-16 fw-500">{{ work_abroad.name }}</h3>
+                <div class="text-14 lh-15 fw-500 mt-20">Заработная плата: {{ work_abroad.salery_min }} - {{ work_abroad.salery_max }} долларов</div>
+                <div class="col-12">
+                  <a href="{% url 'work_abroad_detail' pk=work_abroad.pk %}" class="button -dark-2 py-15 px-35 h-60 col-12 rounded-4 bg-blue-1 text-white">Подробнее</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+              <p>В данное время данных нет.</p>
+          {% endif %}
+          </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+
+<section class="layout-pt-lg layout-pb-md">
+
+  <div class="container">
+
+    <div data-anim="slide-up delay-1" class="row y-gap-20 justify-between items-end">
+      <div class="col-auto">
+        <div class="sectionTitle -md">
+          <h2 class="sectionTitle__title">Оформление визы в США, Европу, Японию, Тайланд и другие страны мира.</h2>
+          <p class=" sectionTitle__text mt-5 sm:mt-0">Мы помогаем в оформлении виз по следующим направлениям: туризм, деловая поездка и гостевая поездка.</p>
+        </div>
+      </div>
+
+      <div class="col-auto md:d-none">
+
+        <a href="{% url 'work_abroad_list' %}" class="button -md -blue-1 bg-blue-1-05 text-blue-1">
+          Показать все <div class="icon-arrow-top-right ml-15"></div>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="relative pt-40 sm:pt-20 js-section-slider" data-gap="30" data-scrollbar
+      data-slider-cols="base-2 xl-4 lg-3 md-2 sm-2 base-1" data-anim="slide-up delay-2">
+   
+        <div class="container">
+          <div class="col-xs-12 text-center">
+            <div class="d-flex me-5">
+              {% for visa in visas %}
+                <div>
+                  <h2><a href="{% url 'visas_detail' pk=visa.pk %}" style="margin-right: 20px;border-radius: 30px; padding: 8px 15px;background-color: #00000097; color: white;font-size: 14px;">   {{ visa.name }}   </a></h2>
+                  <!-- Добавьте другие поля модели Visas, которые вы хотите отобразить -->
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          </div>
+
+
+
+    </div>
+  </div>
+</section>
+
 
 
 {% endblock %}

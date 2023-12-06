@@ -55,7 +55,7 @@
               <img src="{% static 'img/general/logo-dark.svg' %}" alt="logo icon">
             </a> <!-- Иконка -->
 
-            <div class="header-menu " data-x="mobile-menu" data-x-toggle="is-menu-active">
+            <div class="header-menu active" data-x="mobile-menu" data-x-toggle="is-menu-active">
               <div class="mobile-overlay"></div>
 
               <div class="header-menu__content">
@@ -114,8 +114,41 @@
             <p data-anim-child="slide-up delay-5" class="text-white mt-6 md:mt-10">Discover amzaing places at
               exclusive deals</p>
           </div>
-  
-  
+          <div data-anim-child="slide-up delay-6" class="tabs -underline mt-60 js-tabs"></div>
+            <div class="tabs__controls d-flex x-gap-30 y-gap-20 justify-center sm:justify-start js-tabs-controls">
+
+
+            <div class="">
+              <a href="{% url 'home' %}" class="tabs__button text-15 fw-500 text-white pb-4 js-tabs-button is-tab-el-active">
+                <span class="mr-10">Главная</span></a>
+            </div>
+            <div class="">
+              <a href="{% url 'outbounds-tours-name' %}" class="tabs__button text-15 fw-500 text-white pb-4 js-tabs-button is-tab-el-active">
+                <span class="mr-10">Туры за рубеж</span></a>
+            </div>
+
+            <div class="">
+              <a href="{% url 'study-abroad-list' %}" class="tabs__button text-15 fw-500 text-white pb-4 js-tabs-button is-tab-el-active">
+                <span class="mr-10">Обучение за границей</span></a>
+            </div>
+
+            <div class="">
+              <a href="{% url 'work_abroad_list' %}" class="tabs__button text-15 fw-500 text-white pb-4 js-tabs-button is-tab-el-active">
+                <span class="mr-10">Работа за границей</span></a>
+            </div>
+
+            <div class="">
+              <a href="{% url 'visas_list' %}" class="tabs__button text-15 fw-500 text-white pb-4 js-tabs-button is-tab-el-active">
+                <span class="mr-10">Визы</span></a>
+            </div>
+
+            <div class="">
+              <a href="{% url 'education_list' %}" class="tabs__button text-15 fw-500 text-white pb-4 js-tabs-button is-tab-el-active">
+                <span class="mr-10">Академия</span></a>
+            </div>
+         
+          </div>
+         </div>
         </div>
       </div>
     </div>

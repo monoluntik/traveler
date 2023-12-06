@@ -2,6 +2,7 @@ from django.shortcuts import render
 from tours.models import OutboundsTour
 from studyAbroad.models import StudyAbroad
 from visas.models import Visas
+from work_abroad.models import WorkAbroad 
 # Create your views here.
 
 
@@ -18,13 +19,39 @@ def showAllShortsLists(request):
     outboundsToursAll = OutboundsTour.objects.all()
     studyAbroad = StudyAbroad.objects.all()
     visas = Visas.objects.all()
+    workAbroad = WorkAbroad.objects.all()
+    if outboundsToursAll.count() >= 5:
+        outbounds_tours_first_5 = outboundsToursAll[:5]
+    else:
+        # Handle the case where there are fewer than 5 objects
+        outbounds_tours_first_5 = outboundsToursAll
+
+    if studyAbroad.count() >= 5:
+        studyAbroad_first_5 = studyAbroad[:5]
+    else:
+        # Handle the case where there are fewer than 5 objects
+        studyAbroad_first_5 = studyAbroad
+
+    if visas.count() >= 5:
+        visas_first_5 = visas[:5]
+    else:
+        # Handle the case where there are fewer than 5 objects
+        visas_first_5 = visas
+
+    if workAbroad.count() >= 5:
+        workAbroadfirst_5 = workAbroad[:5]
+    else:
+        # Handle the case where there are fewer than 5 objects
+        workAbroad = workAbroad
+
 
     return render(
         request, "index.html", 
         {
-            "outboundsToursAll": outboundsToursAll, 
-            "studyAbroad": studyAbroad, 
-            "visas": visas, 
+            "outboundsToursAll": outbounds_tours_first_5, 
+            "studyAbroad": studyAbroad_first_5, 
+            "visas": visas_first_5, 
+            'work_abroads': workAbroad, 
         }
     )
 
