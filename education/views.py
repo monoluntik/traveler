@@ -1,7 +1,6 @@
 # Ваш файл views.py
 from django.views.generic import ListView, DetailView
 from .models import Education
-from django.views.decorators.cache import cache_page
 
 class EducationListView(ListView):
     model = Education

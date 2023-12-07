@@ -17,10 +17,9 @@ RUN pip install -r requirements.txt
 
 # Копируем файлы проекта в контейнер
 COPY . /app/
-RUN mkdir /app/logs
-COPY proxy_params /etc/nginx/
+
 # Открываем порт, на котором будет работать приложение
 EXPOSE 8000
 
 # Команда для запуска приложения
-CMD ["gunicorn", "core.wsgi:application", "-b", "0.0.0.0:8000", "--log-file", "/app/logs/gunicorn.log", "--log-level", "debug"]
+CMD ["gunicorn", "core.wsgi:application", "-b", "0.0.0.0:8000"]
