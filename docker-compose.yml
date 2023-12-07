@@ -9,6 +9,8 @@ services:
       POSTGRES_PASSWORD: mypassword
     ports:
       - "5432:5432"
+    links:
+      - db:db
   web:
     build: .
     command: ["gunicorn", "core.wsgi:application", "-b", "0.0.0.0:8000"]
