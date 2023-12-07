@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from .forms import StudyAbroadFilterForm
 from .models import StudyAbroad
+from django.views.decorators.cache import cache_page
 
 # def study_abroad_list(request):
 #     form = StudyAbroadFilterForm(request.GET)
@@ -32,7 +33,7 @@ def study_abroad_detail(request, pk):
     study = get_object_or_404(StudyAbroad, pk=pk)
     return render(request, 'study_abroad_detail.html', {'study': study})
 
-
+@cache_page(60 * 15) 
 def study_abroad_list(request):
     if request.method == 'POST':
         form = StudyAbroadFilterForm(request.POST)

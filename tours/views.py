@@ -4,6 +4,7 @@ from studyAbroad.models import StudyAbroad
 from visas.models import Visas
 from work_abroad.models import WorkAbroad 
 # Create your views here.
+from django.views.decorators.cache import cache_page
 
 
 
@@ -14,7 +15,7 @@ from work_abroad.models import WorkAbroad
 'academy list pk -- listview detailview'
 'visa list pk -- listview detailview'
 'work abroad list pk -- listview detailview'
-
+@cache_page(60 * 15) 
 def showAllShortsLists(request):
     outboundsToursAll = OutboundsTour.objects.all()
     studyAbroad = StudyAbroad.objects.all()
@@ -61,7 +62,7 @@ def showAllShortsLists(request):
 from django.shortcuts import render
 from tours.models import OutboundsTour
 from tours.forms import OutboundTourForm
-
+@cache_page(60 * 15) 
 def outbound_tour_view(request):
     if request.method == 'POST':
         form = OutboundTourForm(request.POST)
@@ -110,7 +111,7 @@ def outbound_tour_view(request):
 # Ваш файл views.py
 from django.shortcuts import render, get_object_or_404
 from .models import OutboundsTour
-
+@cache_page(60 * 15) 
 def outbound_tour_detail_view(request, tour_id):
     tour = get_object_or_404(OutboundsTour, id=tour_id)
     print(tour.images.all)
