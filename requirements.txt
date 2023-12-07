@@ -12,3 +12,4 @@ sqlparse
 typing_extensions 
 webencodings 
 gunicorn 
+psycopg2-binary

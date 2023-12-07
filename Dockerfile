@@ -22,5 +22,8 @@ COPY nginx.conf /etc/nginx/
 # Открываем порт, на котором будет работать приложение
 EXPOSE 8000
 
+RUN python manage.py makemigrations
+RUN python manage.py migrate
+
 # Команда для запуска приложения
 CMD ["gunicorn", "core.wsgi:application", "-b", "0.0.0.0:8000"]
