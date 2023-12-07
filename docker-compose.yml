@@ -20,10 +20,7 @@ services:
       - ./media:/app/media
     ports:
       - "80:8000"  # изменение порта на 80
-    depends_on:
-      - db
-    links:
-      - db:db
+
   nginx:
     image: nginx
     volumes:
