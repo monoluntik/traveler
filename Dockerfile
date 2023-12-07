@@ -8,7 +8,6 @@ ENV PYTHONUNBUFFERED 1
 # Создаем и устанавливаем рабочую директорию
 WORKDIR /app
 
-RUN apt-get install -y wait-for-it
 # Копируем файл зависимостей
 COPY requirements.txt /app/
 
@@ -22,7 +21,7 @@ COPY proxy_params /etc/nginx/
 COPY nginx.conf /etc/nginx/
 # Открываем порт, на котором будет работать приложение
 EXPOSE 8000
-
+RUN apt-get install -y wait-for-it
 RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate
 
