@@ -9,8 +9,7 @@ services:
       POSTGRES_PASSWORD: mypassword
     ports:
       - "5432:5432"
-    links:
-      - db:db
+
   web:
     build: .
     command: ["gunicorn", "core.wsgi:application", "-b", "0.0.0.0:8000"]
@@ -23,6 +22,8 @@ services:
       - "80:8000"  # изменение порта на 80
     depends_on:
       - db
+    links:
+      - db:db
   nginx:
     image: nginx
     volumes:
