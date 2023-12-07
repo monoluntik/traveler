@@ -1,20 +1,15 @@
 version: '3'
 
 services:
-
   web:
     build: .
     command: ["gunicorn", "core.wsgi:application", "-b", "0.0.0.0:8000"]
-
     volumes:
       - .:/app
       - ./static:/app/static
       - ./media:/app/media
     ports:
       - "80:8000"  # изменение порта на 80
-    extra_hosts:
-      - "database:172.17.0.1"
-    entrypoint: ./wsgi-entrypoint.sh
   nginx:
     image: nginx
     volumes:
@@ -22,7 +17,6 @@ services:
       - ./proxy_params:/etc/nginx/proxy_params
     ports:
       - "8080:80"  # сохранение порта 8080 для доступа к Nginx в случае необходимости
-
 
 volumes:
   static:
