@@ -22,4 +22,4 @@ RUN mkdir /app/logs
 EXPOSE 8000
 
 # Команда для запуска приложения
-CMD ["gunicorn", "core.wsgi:application", "-b", "0.0.0.0:8000", "--log-file", "/app/logs/gunicorn.log"]
+CMD ["gunicorn", "core.wsgi:application", "-b", "0.0.0.0:8000", "--log-file", "/app/logs/gunicorn.log", "--log-level", "debug"]

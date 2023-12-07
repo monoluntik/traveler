@@ -1,7 +1,12 @@
 import os
+import sys
+import logging
 from django.core.wsgi import get_wsgi_application
-from gunicorn_logger import Logger  # добавьте эту строку
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 application = get_wsgi_application()
-application = Logger(application)  # добавьте эту строку
+
+# Добавьте следующие строки для настройки логирования
+logger = logging.getLogger('gunicorn.error')
+application = logging.handlers.WatchedFileHandler('/app/logs/gunicorn.log')
+logger.addHandler(application)

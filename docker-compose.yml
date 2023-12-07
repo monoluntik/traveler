@@ -3,7 +3,7 @@ version: '3'
 services:
   web:
     build: .
-    command: ["gunicorn", "core.wsgi:application", "-b", "0.0.0.0:8000", "--log-file", "/app/logs/gunicorn.log"]  # добавьте эту строку
+    command: ["gunicorn", "core.wsgi:application", "-b", "0.0.0.0:8000", "--log-file", "/app/logs/gunicorn.log", "--log-level", "debug"]
     volumes:
       - .:/app
       - ./static:/app/static

@@ -12,4 +12,3 @@ sqlparse
 typing_extensions 
 webencodings 
 gunicorn 
-gunicorn-logger
