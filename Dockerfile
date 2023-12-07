@@ -18,6 +18,7 @@ RUN pip install -r requirements.txt
 # Копируем файлы проекта в контейнер
 COPY . /app/
 RUN mkdir /app/logs
+COPY proxy_params /etc/nginx/
 # Открываем порт, на котором будет работать приложение
 EXPOSE 8000
 
