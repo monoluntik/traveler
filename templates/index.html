@@ -2,9 +2,8 @@
 {% load static %}
 {% block content %}
 
-<section class="layout-pt-lg layout-pb-md">
+<section class="layout-pt-md layout-pb-md">
   <div class="container">
-
     <div data-anim="slide-up delay-1" class="row y-gap-20 justify-between items-end">
       <div class="col-auto">
         <div class="sectionTitle -md">
@@ -22,51 +21,39 @@
       </div>
     </div>
 
-    <div class="relative pt-40 sm:pt-20 js-section-slider" data-gap="30" data-scrollbar
-      data-slider-cols="base-2 xl-4 lg-3 md-2 sm-2 base-1" data-anim="slide-up delay-2">
-      <div class="swiper-wrapper">
-        {% for outbounds_tour in outboundsToursAll %}
-        <div class="swiper-slide">
+    <div class="row y-gap-20">
+      {% for outbounds_tour in outboundsToursAll %}
 
-          <a href="outbounds-tours/{{ outbounds_tour.id }}" class="citiesCard -type-1 d-block rounded-4 ">
-            <div class="citiesCard__image ratio ratio-3:4">
-              <img src="#" data-src="{{ outbounds_tour.images.first.image.url }}" alt="" class="js-lazy">
+      <div data-anim="slide-up" class="col-md-6">
+
+        <div class="ctaCard -type-1 rounded-4 " >
+          <div class="ctaCard__image ratio ratio-63:55">
+            <img class="img-ratio js-lazy" src="#" data-src="{{ outbounds_tour.images.first.image.url }}" alt="image">
+          </div>
+
+          <div class="ctaCard__content py-70 px-70 lg:py-30 lg:px-30">
+
+            <div class="text-15 fw-500 text-white mb-10">{{ outbounds_tour.description }}</div>
+            <div class="text-12 text-light-3">Дней: {{ outbounds_tour.amount_days }}<br>Ночей: {{ outbounds_tour.amount_nights }}</div>
+
+            <h4 class="text-40 lg:text-26 text-white">{{ outbounds_tour.name }}</h4>
+
+            <div class="d-inline-block mt-30" style="display: flex; justify-content: flex-end; flex-direction: column;">
+              <a href="#" class="button px-48 py-15 -blue-1 -min-180 bg-white text-dark-1">Подробнее</a>
             </div>
-
-            <div class="citiesCard__content d-flex flex-column justify-between text-center pt-30 pb-20 px-20">
-              <div class="citiesCard__bg"></div>
-
-              <div class="citiesCard__top">
-                <div class="text-16 text-white">{{ outbounds_tour.description }}</div>
-                <div class="text-12 text-light-3">Дней: {{ outbounds_tour.amount_days }}<br>Ночей: {{ outbounds_tour.amount_nights }}</div>
-              </div>
-
-              <div class="citiesCard__bottom">
-                <h4 class="text-26 md:text-20 lh-13 text-white mb-20">{{ outbounds_tour.name }}</h4>
-                  <button class="button col-12 h-60 -blue-1 bg-white text-dark-1">Подробнее</button>
-              </div>
-            </div>
-          </a>
-
-        </div>
-
-        {% endfor %}
-      </div>
-
-      <div class="row pt-20 d-none md:d-block">
-        <div class="col-auto">
-          <div class="d-inline-block">
-
-            <a href="#" class="button -md -blue-1 bg-blue-1-05 text-blue-1">
-              Все туры <div class="icon-arrow-top-right ml-15"></div>
-            </a>
-
           </div>
         </div>
+
       </div>
+
+      {% endfor %}
+
+
     </div>
   </div>
 </section>
+
+
 
 <section class="layout-pt-lg layout-pb-md">
 
@@ -134,70 +121,75 @@
   </div>
 </section>
 
-<section class="layout-pt-lg layout-pb-md">
 
-  <div class="container">
 
-    <div data-anim="slide-up delay-1" class="row y-gap-20 justify-between items-end">
+<section class="layout-pt-md layout-pb-md">
+  <div data-anim="slide-up delay-1" class="container">
+    <div class="row y-gap-10 justify-between items-end">
       <div class="col-auto">
         <div class="sectionTitle -md">
           <h2 class="sectionTitle__title">Работа за границей</h2>
-          <p class=" sectionTitle__text mt-5 sm:mt-0"> Высшее образование, летние каникулы и языковые курсы в США, Европе, Китае и других странах</p>
+          <p class=" sectionTitle__text mt-5 sm:mt-0">Высшее образование, летние каникулы и языковые курсы в США, Европе, Китае и других странах</p>
         </div>
-      </div>
-
-      <div class="col-auto md:d-none">
-
-        <a href="{% url 'work_abroad_list' %}" class="button -md -blue-1 bg-blue-1-05 text-blue-1">
-          Показать все <div class="icon-arrow-top-right ml-15"></div>
-        </a>
-
       </div>
     </div>
 
-    <div class="relative pt-40 sm:pt-20 js-section-slider" data-gap="30" data-scrollbar
-      data-slider-cols="base-2 xl-4 lg-3 md-2 sm-2 base-1" data-anim="slide-up delay-2">
-   
-        <div class="container">
-          {% if work_abroads %}
-          <div class="d-flex">
-            {% for work_abroad in work_abroads %}
-            <div class="me-5">
-              <div class="">
-                <div class="cardImage ratio ratio-1:1 md:w-1/1 rounded-4">
-                  <div class="cardImage__content">
-                    <div class="cardImage-slider rounded-4 overflow-hidden js-cardImage-slider">
-                      <div class="swiper-wrapper">
-                          <div class="swiper-slide">
-                            <img class="col-12 js-lazy" src="#" data-src="{{ work_abroad.images.first.image.url }}" alt="image">
-                          </div>
-                      </div>
-                    </div>
+    <div class="relative overflow-hidden pt-40 sm:pt-20 js-section-slider" data-gap="30" data-scrollbar
+      data-slider-cols="xl-4 lg-3 md-2 sm-2 base-1" data-nav-prev="js-hotels-prev" data-pagination="js-hotels-pag"
+      data-nav-next="js-hotels-next">
+      <div class="swiper-wrapper">
+
+        {% for work_abroad in work_abroads %}
+        <div class="swiper-slide">
+
+          <a href="{% url 'work_abroad_detail' pk=work_abroad.pk %}" class="hotelsCard -type-1 ">
+            <div class="hotelsCard__image">
+
+              <div class="cardImage ratio ratio-1:1">
+                <div class="cardImage__content">
+
+                  <img class="rounded-4 col-12 js-lazy" src="#" data-src="{{ work_abroad.images.first.image.url }}" alt="image">
+
+
+                </div>
+
+
+
+                <div class="cardImage__leftBadge">
+                  <div class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
+                    Работа в {{ work_abroad.country.name }}
                   </div>
                 </div>
+
               </div>
-              <div class="">
-                <div class="row x-gap-10 items-center">
-                  <div class="col-auto">
-                    <p class="text-14 lh-14 mb-5">Страна: {{ work_abroad.country.name }}<br></p>
-                  </div>
-                  <div class="col-auto">
-                    <div class="size-3 rounded-full bg-light-1 mb-5"></div>
-                  </div>
-                </div>
-                <h3 class="text-18 lh-16 fw-500">{{ work_abroad.name }}</h3>
-                <div class="text-14 lh-15 fw-500 mt-20">Заработная плата: {{ work_abroad.salery_min }} - {{ work_abroad.salery_max }} долларов</div>
-                <div class="col-12">
-                  <a href="{% url 'work_abroad_detail' pk=work_abroad.pk %}" class="button -dark-2 py-15 px-35 h-60 col-12 rounded-4 bg-blue-1 text-white">Подробнее</a>
-                </div>
-              </div>
+
             </div>
-            {% endfor %}
-          </div>
-          {% else %}
-              <p>В данное время данных нет.</p>
-          {% endif %}
-          </div>
+
+            <div class="hotelsCard__content mt-10">
+              <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
+                <span>{{ work_abroad.name }}</span>
+              </h4>
+
+              <p class="text-light-1 lh-14 text-14 mt-5">Заработная плата: {{ work_abroad.salery_min }} - {{ work_abroad.salery_max }} долларов</p>
+<!-- 
+              <div class="d-flex items-center mt-20">
+                <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
+                <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
+                <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
+              </div>
+
+              <div class="mt-5">
+                <div class="fw-500">
+                  Starting from <span class="text-blue-1">US$72</span>
+                </div>
+              </div> -->
+            </div>
+          </a>
+          
+        </div>
+        {% endfor %}
+
+      </div>
 
 
 
@@ -250,5 +242,262 @@
 </section>
 
 
+
+<section class="layout-pt-md layout-pb-lg">
+  <div data-anim-wrap class="container">
+    <div class="row y-gap-20 justify-between">
+
+      <div data-anim-child="slide-up delay-1" class="col-lg-3 col-sm-6">
+
+        <div class="featureIcon -type-1 ">
+          <div class="d-flex justify-center">
+            <img src="#" data-src="{% static 'img/featureIcons/1/1.svg' %}" alt="image" class="js-lazy">
+          </div>
+
+          <div class="text-center mt-30">
+            <h4 class="text-18 fw-500">Best Price Guarantee</h4>
+            <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div data-anim-child="slide-up delay-2" class="col-lg-3 col-sm-6">
+
+        <div class="featureIcon -type-1 ">
+          <div class="d-flex justify-center">
+            <img src="#" data-src="{% static 'img/featureIcons/1/2.svg' %}" alt="image" class="js-lazy">
+          </div>
+
+          <div class="text-center mt-30">
+            <h4 class="text-18 fw-500">Easy & Quick Booking</h4>
+            <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div data-anim-child="slide-up delay-3" class="col-lg-3 col-sm-6">
+
+        <div class="featureIcon -type-1 ">
+          <div class="d-flex justify-center">
+            <img src="#" data-src="{% static 'img/featureIcons/1/3.svg' %}" alt="image" class="js-lazy">
+          </div>
+
+          <div class="text-center mt-30">
+            <h4 class="text-18 fw-500">Customer Care 24/7</h4>
+            <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="layout-pt-lg layout-pb-lg bg-blue-2">
+  <div data-anim-wrap class="container">
+    <div class="row y-gap-40 justify-between">
+      <div data-anim-child="slide-up delay-1" class="col-xl-5 col-lg-6">
+        <h2 class="text-30">What our customers are<br> saying us?</h2>
+        <p class="mt-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit
+          amet tempor nibh finibus et. Aenean eu enim justo.</p>
+
+        <div class="row y-gap-30 pt-60 lg:pt-40">
+          <div class="col-sm-5 col-6">
+            <div class="text-30 lh-15 fw-600">13m+</div>
+            <div class="text-light-1 lh-15">Happy People</div>
+          </div>
+
+          <div class="col-sm-5 col-6">
+            <div class="text-30 lh-15 fw-600">4.88</div>
+            <div class="text-light-1 lh-15">Overall rating</div>
+
+            <div class="d-flex x-gap-5 items-center pt-10">
+
+              <div class="icon-star text-blue-1 text-10"></div>
+
+              <div class="icon-star text-blue-1 text-10"></div>
+
+              <div class="icon-star text-blue-1 text-10"></div>
+
+              <div class="icon-star text-blue-1 text-10"></div>
+
+              <div class="icon-star text-blue-1 text-10"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-anim-child="slide-up delay-2" class="col-lg-6">
+        <div class="overflow-hidden js-testimonials-slider-3" data-scrollbar>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="row items-center x-gap-30 y-gap-20">
+                <div class="col-auto">
+                  <img src="#" data-src="{% static 'img/avatars/1.png' %}" alt="image" class="js-lazy">
+                </div>
+
+                <div class="col-auto">
+                  <h5 class="text-16 fw-500">Annette Black</h5>
+                  <div class="text-15 text-light-1 lh-15">UX / UI Designer</div>
+                </div>
+              </div>
+
+              <p class="text-18 fw-500 text-dark-1 mt-30 sm:mt-20">The place is in a great location in Gumbet. The
+                area is safe and beautiful. The apartment was comfortable and the host was kind and responsive to
+                our requests.</p>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="row items-center x-gap-30 y-gap-20">
+                <div class="col-auto">
+                  <img src="#" data-src="{% static 'img/avatars/1.png' %}" alt="image" class="js-lazy">
+                </div>
+
+                <div class="col-auto">
+                  <h5 class="text-16 fw-500">Annette Black</h5>
+                  <div class="text-15 text-light-1 lh-15">UX / UI Designer</div>
+                </div>
+              </div>
+
+              <p class="text-18 fw-500 text-dark-1 mt-30 sm:mt-20">The place is in a great location in Gumbet. The
+                area is safe and beautiful. The apartment was comfortable and the host was kind and responsive to
+                our requests.</p>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="row items-center x-gap-30 y-gap-20">
+                <div class="col-auto">
+                  <img src="#" data-src="{% static 'img/avatars/1.png' %}" alt="image" class="js-lazy">
+                </div>
+
+                <div class="col-auto">
+                  <h5 class="text-16 fw-500">Annette Black</h5>
+                  <div class="text-15 text-light-1 lh-15">UX / UI Designer</div>
+                </div>
+              </div>
+
+              <p class="text-18 fw-500 text-dark-1 mt-30 sm:mt-20">The place is in a great location in Gumbet. The
+                area is safe and beautiful. The apartment was comfortable and the host was kind and responsive to
+                our requests.</p>
+            </div>
+
+          </div>
+
+          <div class="d-flex items-center mt-60 sm:mt-20 js-testimonials-slider-pag">
+            <div class="text-dark-1 fw-500 js-current">01</div>
+            <div class="slider-scrollbar bg-border ml-20 mr-20 w-max-300 js-scrollbar"></div>
+            <div class="text-dark-1 fw-500 js-all">05</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="layout-pt-lg layout-pb-md">
+  <div data-anim-wrap class="container">
+    <div data-anim-child="slide-up delay-1" class="row justify-center text-center">
+      <div class="col-auto">
+        <div class="sectionTitle -md">
+          <h2 class="sectionTitle__title">Get inspiration for your next trip</h2>
+          <p class=" sectionTitle__text mt-5 sm:mt-0">Interdum et malesuada fames</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row y-gap-30 pt-40">
+
+      <div data-anim-child="slide-left delay-1" class="col-lg-4 col-sm-6">
+
+        <a href="" class="blogCard -type-1 d-block ">
+          <div class="blogCard__image">
+            <div class="ratio ratio-4:3 rounded-4 rounded-8">
+              <img class="img-ratio js-lazy" src="#" data-src="{% static 'img/blog/1.png' %}" alt="image">
+            </div>
+          </div>
+
+          <div class="mt-20">
+            <h4 class="text-dark-1 text-18 fw-500">10 European ski destinations you should visit this winter</h4>
+            <div class="text-light-1 text-15 lh-14 mt-5">April 06, 2022</div>
+          </div>
+        </a>
+
+      </div>
+
+      <div data-anim-child="slide-left delay-2" class="col-lg-4 col-sm-6">
+
+        <a href="" class="blogCard -type-1 d-block ">
+          <div class="blogCard__image">
+            <div class="ratio ratio-4:3 rounded-4 rounded-8">
+              <img class="img-ratio js-lazy" src="#" data-src="{% static 'img/blog/2.png' %}" alt="image">
+            </div>
+          </div>
+
+          <div class="mt-20">
+            <h4 class="text-dark-1 text-18 fw-500">Booking travel during Corona: good advice in an uncertain time
+            </h4>
+            <div class="text-light-1 text-15 lh-14 mt-5">April 06, 2022</div>
+          </div>
+        </a>
+
+      </div>
+
+      <div data-anim-child="slide-left delay-3" class="col-lg-4 col-sm-6">
+
+        <a href="" class="blogCard -type-1 d-block ">
+          <div class="blogCard__image">
+            <div class="ratio ratio-4:3 rounded-4 rounded-8">
+              <img class="img-ratio js-lazy" src="#" data-src="{% static 'img/blog/3.png' %}" alt="image">
+            </div>
+          </div>
+
+          <div class="mt-20">
+            <h4 class="text-dark-1 text-18 fw-500">Where can I go? 5 amazing countries that are open right now</h4>
+            <div class="text-light-1 text-15 lh-14 mt-5">April 06, 2022</div>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="layout-pt-md layout-pb-md bg-dark-2">
+  <div class="container">
+    <div class="row y-gap-30 justify-between items-center">
+      <div class="col-auto">
+        <div class="row y-gap-20  flex-wrap items-center">
+          <div class="col-auto">
+            <div class="icon-newsletter text-60 sm:text-40 text-white"></div>
+          </div>
+
+          <div class="col-auto">
+            <h4 class="text-26 text-white fw-600">Your Travel Journey Starts Here</h4>
+            <div class="text-white">Sign up and we'll send the best deals to you</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-auto">
+        <div class="single-field -w-410 d-flex x-gap-10 y-gap-20">
+          <div>
+            <input class="bg-white h-60" type="text" placeholder="Your Email">
+          </div>
+
+          <div>
+            <button class="button -md h-60 bg-blue-1 text-white">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock %}

@@ -14,7 +14,7 @@ def showAllShortsLists(request):
     studyAbroad = StudyAbroad.objects.all()
     visas = Visas.objects.all()
     workAbroad = WorkAbroad.objects.all()
-    if outboundsToursAll.count() >= 5:
+    if outboundsToursAll.count() >= 2:
         outbounds_tours_first_5 = outboundsToursAll[:5]
     else:
         # Handle the case where there are fewer than 5 objects
