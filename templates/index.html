@@ -39,7 +39,7 @@
             <h4 class="text-40 lg:text-26 text-white">{{ outbounds_tour.name }}</h4>
 
             <div class="d-inline-block mt-30" style="display: flex; justify-content: flex-end; flex-direction: column;">
-              <a href="#" class="button px-48 py-15 -blue-1 -min-180 bg-white text-dark-1">Подробнее</a>
+              <a href="{% url 'outbounds_tour' pk=outbounds_tour.pk %}" class="button px-48 py-15 -blue-1 -min-180 bg-white text-dark-1">Подробнее</a>
             </div>
           </div>
         </div>
