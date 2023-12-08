@@ -9,7 +9,7 @@ class StudyAbroadFilterForm(forms.ModelForm):
         fields = ['country', 'type_of_training', 'language', 'accommodation']
 
 
-    country = CountryField(blank_label='Страна').formfield(required=False)
+    country = CountryField(blank_label='Страна', default='RU').formfield(required=False)
     type_of_training = forms.ChoiceField(choices=(('', 'Тип программы'),) + CH_type_of_training, required=False)
     language = forms.ChoiceField(choices=(('', 'Язык'),) + CH_language, required=False)
     accommodation = forms.ChoiceField(choices=(('', 'Форма проживания'),) + CH_accommodation, required=False)

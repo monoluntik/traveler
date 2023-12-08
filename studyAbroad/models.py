@@ -42,7 +42,7 @@ CH_for_whome = (
     )
 class StudyAbroad(models.Model):
     name = models.CharField(max_length=555)
-    country = CountryField()
+    country = CountryField(blank_label='Страна', default='RU')
     type_of_training = models.CharField(choices=CH_type_of_training, max_length=255)
     language = models.CharField(choices=CH_language, max_length=255)
     accommodation = models.CharField(choices=CH_accommodation,  max_length=255 )

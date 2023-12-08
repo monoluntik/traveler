@@ -6,7 +6,7 @@ from django_quill.fields import QuillField
 
 
 class WorkAbroad(models.Model):
-    country = CountryField()
+    country = CountryField(blank_label='Страна', default='RU')
     name = models.CharField(max_length=255)
     description = QuillField()
     salery_min = models.FloatField(default=0)

@@ -19,7 +19,7 @@ class OutboundsTour(models.Model):
     is_holiday_tours = models.BooleanField(verbose_name='Туры на праздники')
 
 class OutboundsTourCountry(models.Model):
-    country = CountryField()
+    country = CountryField(blank_label='Страна', default='RU')
     outbounds_tour = models.ForeignKey(OutboundsTour, on_delete=models.CASCADE, related_name='countries')
     
 class OutboundsTourDay(models.Model):
