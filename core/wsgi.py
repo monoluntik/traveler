@@ -10,14 +10,7 @@ https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/
 import os
 
 from django.core.wsgi import get_wsgi_application
-import logging
 
-# Настройте логирование в начале вашего файла или модуля
-logging.basicConfig(level=logging.INFO)
-
-# Используйте logging для записи информации в лог
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 
 application = get_wsgi_application()
-
-logging.info("Запущено мое приложение")
